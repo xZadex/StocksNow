@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>StocksNow</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Stocks<span class="logo-2">Now</span></div>
+        </nav>
+    </header>
+    <section>
+        <div class="scroll-container">
+            <div class="scroll-stock-container">
+                <div class="stock-01">
+                    <div>
+                        <p>S&P500</p>
+                        <p>23,606.58</p>
+                    </div>
+                    <div class="stock-01-2">
+                        <p>▼</p>
+                        <p>63.33</p>
+                    </div>
+                </div>
+                <div class="stock-01">
+                    <div>
+                        <p>S&P500</p>
+                        <p>23,606.58</p>
+                    </div>
+                    <div class="stock-01-2">
+                        <p>▼</p>
+                        <p>63.33</p>
+                    </div>
+                </div>
+                <div class="stock-01">
+                    <div>
+                        <p>S&P500</p>
+                        <p>23,606.58</p>
+                    </div>
+                    <div class="stock-01-2">
+                        <p>▼</p>
+                        <p>63.33</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <main>
+        {%if stock%}
+        <div>
+            <section>
+                <div class="search-box-container">
+                    <form action="/search_ticker" method="POST">
+                        <input type="text" placeholder="Search Ticker" name="ticker">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+            </section>
+            <section>
+                <div class="stock-info-container">
+                    <p class="stock-content-ticker">{{stock.ticker}}</p>
+                    <div class="stock-content-box">
+                        <p>Name:</p>
+                        <p>{{stock.name}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Current Price:</p>
+                        <p>{{stock.current_price}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Previous Close:</p>
+                        <p>{{stock.previous_close}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Bid:</p>
+                        <p>{{stock.bid}} X {{stock.bid_size}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Ask:</p>
+                        <p>{{stock.ask}} X {{stock.ask_size}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Day's Range:</p>
+                        <p>{{stock.day_low}} - {{stock.day_high}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>52 Week Range:</p>
+                        <p>{{stock.fifty_two_week_low}} - {{stock.fifty_two_week_high}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Volume:</p>
+                        <p>{{stock.volume}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Avg. Volume:</p>
+                        <p>{{stock.avg_volume}}</p>
+                    </div>
+                    <div class="stock-content-box">
+                        <p>Market Cap:</p>
+                        <p>{{stock.market_cap}}</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div>
+            {%if stories%}
+            <section>
+                <div class="news-container">
+                    <p class="news-content-title">NEWS</p>
+                    <a href="{{stories[0].link}}" target="_blank" class="link">
+                        <div class="news-content-box">
+                            <div class="news-image-container">
+                                <img src="{{stories[0].image}}" alt="placeholder">
+                            </div>
+                            <div class="news-content-container">
+                                <p class="news-title">{{stories[0].title}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{{stories[1].link}}" target="_blank" class="link">
+                        <div class="news-content-box">
+                            <div class="news-image-container">
+                                <img src="{{stories[1].image}}" alt="placeholder">
+                            </div>
+                            <div class="news-content-container">
+                                <p class="news-title">{{stories[1].title}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{{stories[2].link}}" target="_blank" class="link">
+                        <div class="news-content-box">
+                            <div class="news-image-container">
+                                <img src="{{stories[2].image}}" alt="placeholder">
+                            </div>
+                            <div class="news-content-container">
+                                <p class="news-title">{{stories[2].title}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            {%endif%}
+        </div>
+    {%endif%}
+    </main>
+</body>
+</html>
