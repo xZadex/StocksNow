@@ -1,4 +1,5 @@
 from flask_app import app
+from flask import flash
 
 class Stock:
     def __init__(self,data):
@@ -32,6 +33,14 @@ class Stock:
             current_story = News(article)
             story_array.append(current_story)
         return story_array
+
+    @classmethod
+    def validate(data):
+        is_valid = True
+        if len(data['ticker']) < 2:
+            flash('Please enter a valid ticker', 'ticker')
+            is_valid = False
+        return is_valid
 
 class News:
     def __init__(self,data):

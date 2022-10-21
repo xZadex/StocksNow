@@ -21,36 +21,34 @@
     <section>
         <div class="scroll-container">
             <div class="scroll-stock-container">
-                <div class="stock-01">
-                    <div>
-                        <p>S&P500</p>
-                        <p>23,606.58</p>
+                <marquee behavior="scroll" direction="left" class="scroller">
+                    <div style="display: flex; gap: 1em;">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span>S&P500<br>23,606.58</span>
+                            <span>▼63.33</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span>DOW30<br>30,333.59</span>
+                            <span>▼90.22</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span>Nasdaq<br>10,614.84</span>
+                            <span>▼65.66</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span>Russell2000<br>1,704.39</span>
+                            <span>▼21.36</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span>Crude Oil<br>85.71</span>
+                            <span>▼0.27</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span>Gold<br>1,632.20</span>
+                            <span>▼4.60</span>
+                        </div>
                     </div>
-                    <div class="stock-01-2">
-                        <p>▼</p>
-                        <p>63.33</p>
-                    </div>
-                </div>
-                <div class="stock-01">
-                    <div>
-                        <p>S&P500</p>
-                        <p>23,606.58</p>
-                    </div>
-                    <div class="stock-01-2">
-                        <p>▼</p>
-                        <p>63.33</p>
-                    </div>
-                </div>
-                <div class="stock-01">
-                    <div>
-                        <p>S&P500</p>
-                        <p>23,606.58</p>
-                    </div>
-                    <div class="stock-01-2">
-                        <p>▼</p>
-                        <p>63.33</p>
-                    </div>
-                </div>
+                </marquee>
             </div>
         </div>
     </section>
@@ -60,6 +58,15 @@
             <section>
                 <div class="search-box-container">
                     <form action="/search_ticker" method="POST">
+                        <div class="container" style="background-color: pink;">
+                            {% with messages = get_flashed_messages(category_filter=['ticker']) %}     <!-- declare a variable called messages -->
+                            {% if messages %}                            <!-- check if there are any messages -->
+                                {% for message in messages %}            <!-- loop through the messages -->
+                                    <p style="color: rgb(114, 3, 3);">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                                {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        </div>
                         <input type="text" placeholder="Search Ticker" name="ticker">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

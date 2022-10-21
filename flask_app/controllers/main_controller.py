@@ -22,6 +22,8 @@ def show_stock(ticker):
 
 @app.route('/search_ticker', methods=['POST'])
 def search_ticker():
+    # if not Stock.validate(request.form['ticker']):
+    #     return redirect('/')
     ticker = request.form['ticker']
     return redirect(f"/{ticker}")
 
