@@ -23,30 +23,76 @@
             <div class="scroll-stock-container">
                 <marquee behavior="scroll" direction="left" class="scroller">
                     <div style="display: flex; gap: 1em;">
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <span>S&P500<br>23,606.58</span>
-                            <span>▼63.33</span>
+                        {%if sp500%}
+                        {%if sp500.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>S&P500<br>{{sp500.current_price}}</span>
+                            <span>{%if sp500.change|float > 0|float%}▲{%else%}▼{%endif%} {{sp500.change}}</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <span>DOW30<br>30,333.59</span>
-                            <span>▼90.22</span>
+                        {%endif%}
+                        {%if dji%}
+                        {%if dji.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>DOW<br>{{dji.current_price}}</span>
+                            <span>{%if dji.change|float > 0|float%}▲{%else%}▼{%endif%} {{dji.change}}</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <span>Nasdaq<br>10,614.84</span>
-                            <span>▼65.66</span>
+                        {%endif%}
+                        {%if nas%}
+                        {%if nas.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>Nasdaq<br>{{nas.current_price}}</span>
+                            <span>{%if nas.change|float > 0|float%}▲{%else%}▼{%endif%} {{nas.change}}</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <span>Russell2000<br>1,704.39</span>
-                            <span>▼21.36</span>
+                        {%endif%}
+                        {%if rus%}
+                        {%if rus.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>Russell2000<br>{{rus.current_price}}</span>
+                            <span>{%if rus.change|float > 0|float%}▲{%else%}▼{%endif%} {{rus.change}}</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <span>Crude Oil<br>85.71</span>
-                            <span>▼0.27</span>
+                        {%endif%}
+                        {%if crude%}
+                        {%if crude.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>Crude Oil<br>{{crude.current_price}}</span>
+                            <span>{%if crude.change|float > 0|float%}▲{%else%}▼{%endif%} {{crude.change}}</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <span>Gold<br>1,632.20</span>
-                            <span>▼4.60</span>
+                        {%endif%}
+                        {%if gold%}
+                        {%if gold.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>Gold<br>{{gold.current_price}}</span>
+                            <span>{%if gold.change|float > 0|float%}▲{%else%}▼{%endif%} {{gold.change}}</span>
                         </div>
+                        {%endif%}
+                        {%if silver%}
+                        {%if silver.change|float > 0|float%}
+                        <div class="positive">
+                        {%else%}
+                        <div class="negative">
+                        {%endif%}
+                            <span>Silver<br>{{silver.current_price}}</span>
+                            <span>{%if silver.change|float > 0|float%}▲{%else%}▼{%endif%} {{silver.change}}</span>
+                        </div>
+                        {%endif%}
                     </div>
                 </marquee>
             </div>

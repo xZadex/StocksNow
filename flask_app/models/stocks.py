@@ -18,6 +18,7 @@ class Stock:
         self.volume = data['volume']
         self.avg_volume = data['averageVolume']
         self.market_cap = data['marketCap']
+        self.change = str(self.current_price - self.previous_close)[:5]
 
     @classmethod
     def get_news(self, data):
@@ -34,13 +35,13 @@ class Stock:
             story_array.append(current_story)
         return story_array
 
-    @classmethod
-    def validate(data):
-        is_valid = True
-        if len(data['ticker']) < 2:
-            flash('Please enter a valid ticker', 'ticker')
-            is_valid = False
-        return is_valid
+    # @classmethod
+    # def validate(data):
+    #     is_valid = True
+    #     if len(data['ticker']) < 2:
+    #         flash('Please enter a valid ticker', 'ticker')
+    #         is_valid = False
+    #     return is_valid
 
 class News:
     def __init__(self,data):

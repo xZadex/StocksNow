@@ -55,6 +55,22 @@ nav{
     font-family: var(--secondary-font-family);
 }
 
+.positive{
+    color: green;
+    text-shadow: 0px 0px 4px green;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.negative{
+    color: red;
+    text-shadow: 0px 0px 4px rgb(231, 6, 6);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .stock-01{
     display: flex;
 }

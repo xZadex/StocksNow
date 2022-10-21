@@ -17,6 +17,7 @@ class Stock:
         self.volume = data['volume']
         self.avg_volume = data['averageVolume']
         self.market_cap = data['marketCap']
+        self.change = self.current_price - self.previous_close
 
     @classmethod
     def get_news(self, data):
@@ -33,6 +34,14 @@ class Stock:
             story_array.append(current_story)
         return story_array
 
+    # @classmethod
+    # def calcDown(current,previous):
+    #     up_or_down = current - previous
+    #     if int(up_or_down) > 0:
+    #         return f'▲ {up_or_down}'
+    #     else:
+    #         return f'▼ {up_or_down}'
+
 class News:
     def __init__(self,data):
         self.title = data['title']
@@ -40,15 +49,19 @@ class News:
         self.link = data['link']
 
 
-
+tickers = yf.Tickers('msft aapl goog')
 ticker = 'TSLA'
 stock_info = yf.Ticker(ticker).info
+sp500 = yf.Ticker('SI=F').info
+mysp500 =Stock(sp500)
 myStock = Stock(stock_info)
 stock_news = yf.Ticker(ticker).news
 # news = stock_news
 news = Stock.get_news(stock_news)
+print(mysp500.name)
+print(str(mysp500.change)[:5])
 
-print(news)
+
 
 
 
